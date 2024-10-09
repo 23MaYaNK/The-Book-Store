@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Added</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General page styling */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f5;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Navbar container */
+        .navbar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 110px;
+            background-color: rgb(192, 186, 186);
+            display: flex;
+            /* align-items: ; */
+            /* justify-content: center; */
+            flex-direction: column;
+        }
+
+        /* Back to Home button in the navbar */
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            display: flex;
+            /* align-items: center; */
+            padding: 10px 20px;
+            background-color: black;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .navbar i {
+            margin-right: 5px;
+        }
+
+        /* Success message container */
+        .success-message {
+            padding: 20px 40px;
+            background-color: #28a745;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        /* Success icon */
+        .success-message:before {
+            content: '\2714';
+            /* Unicode for check mark */
+            font-size: 2rem;
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: bounce 1s infinite alternate;
+        }
+
+        /* Animation for sliding the message in */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Bounce animation for the check mark */
+        @keyframes bounce {
+            from {
+                transform: translateY(-50%) scale(1);
+            }
+
+            to {
+                transform: translateY(-60%) scale(1.1);
+            }
+        }
+
+        /* Extra styling for visual pop */
+        .success-message span {
+            color: #fff3cd;
+            /* Light yellow for contrast */
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1e212d;
+            color: white;
+            padding: 15px 0;
+            /* Adjust padding for a balanced look */
+            text-align: center;
+            z-index: 1000;
+            /* Ensures it stays on top of other elements */
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        footer .social-icons i {
+            margin: 0 10px;
+            font-size: 20px;
+            color: #fff;
+            transition: color 0.3s;
+        }
+
+        footer .social-icons i:hover {
+            color: #3498db;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            background: linear-gradient(135deg, #3b5998, #8b9dc3);
+            width: 150px;
+            height: 100%;
+            padding: 20px;
+            transition: all 0.3s ease-in-out;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+
+        .sidebar.collapsed {
+            width: 80px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .sidebar.collapsed .nav-link span {
+            display: none;
+        }
+
+        .sidebar .nav-link {
+            color: white;
+            font-weight: bold;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.2s, padding-left 0.2s;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding-left: 20px;
+        }
+
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            margin-top: 15px;
+        }
+
+        /* Toggle button styling */
+        .toggle-btn {
+            position: absolute;
+            top: 15px;
+            margin-bottom: 3%;
+            left: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #333;
+            z-index: 1001;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar (Navigation Panel) -->
+    <div class="sidebar" id="sidebar">
+        <ul class="nav flex-column" style="margin-top: 2%;">
+            <li class="nav-item">
+                <button class="toggle-btn" id="toggleBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-book"></i> <span>Back</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/login">
+                    <i class="fas fa-sign-out-alt"></i> <span>Login</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message">
+        <span>New User added successfully!</span>
+    </div>
+
+    <%- include('./base/footer.ejs') %>

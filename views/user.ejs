@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Panel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General page styling */
+        body, html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background-image: url('/images/userbg.jpg');
+        }
+
+        .container-fluid {
+            height: 100vh;
+            display: flex;
+            align-content: end;
+            flex-direction: row;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            background: linear-gradient(135deg, #3b5998, #8b9dc3);
+            width: 150px;
+            height: 100%;
+            padding: 20px;
+            transition: all 0.3s ease-in-out;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+
+        .sidebar.collapsed {
+            width: 80px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .sidebar.collapsed .nav-link span {
+            display: none;
+        }
+
+        .sidebar .nav-link {
+            color: white;
+            font-weight: bold;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.2s, padding-left 0.2s;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding-left: 20px;
+        }
+
+        .sidebar .nav-link i {
+            margin-right: 10px;
+        }
+
+        /* Toggle button styling */
+        .toggle-btn { 
+            position: absolute;
+            top: 15px;
+            margin-bottom: 3%;
+            left: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #333;
+            z-index: 1001;
+        }
+
+        /* Main content styling */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            transition: margin-left 0.3s ease-in-out;
+        }
+        
+        .main-content h1 {
+            color: #343a40;
+            font-size: 2rem;
+            margin-left: 50%;
+        }
+        
+        .main-content p {
+            margin-left: 50%;
+            font-size: 1.1rem;
+            color: #495057;
+        }
+
+        /* Success message styling */
+        
+
+        .success-message.show-message {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Custom button styles */
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+
+        /* Responsive sidebar behavior */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: absolute;
+                height: 100%;
+                z-index: 1000;
+                left: -250px;
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .toggle-btn {
+                left: 15px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .main-content {
+                margin-left: 250px;
+            }
+
+            .sidebar.collapsed + .main-content {
+                margin-left: 80px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+   
+
+    <!-- Sidebar (Navigation Panel) -->
+    <div class="sidebar" id="sidebar" >
+        <ul class="nav flex-column" style="margin-top: 2%;" >
+            <li class="nav-item" >
+                <a class="nav-link" href="/show/books/user">
+                    <i class="fas fa-book"></i> <span>Show Books</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-user"></i> <span>Profile</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/login">
+                    <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <!-- Toggle button for showing/hiding sidebar -->
+        <button class="toggle-btn" id="toggleBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h1 style="display: flex; text-align: end;">User Dashboard</h1>
+     
+    </div>
+    <div class="main-content">
+        <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: start; font-size: x-large;">Welcome to your dashboard! </p>
+    </div>
+    <div class="main-content">
+        <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: start; font-size: x-large;"> Here you can manage books,</p>
+    </div>
+    <div class="main-content">
+        <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align:start ;font-size: x-large;"> view your profile, and more.</p>
+    </div>
+
+    <!-- Bootstrap and JS (for functionality) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Toggle sidebar function
+        document.getElementById('toggleBtn').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+        });
+
+        // Show success message function
+        function showMessage() {
+            const message = document.getElementById('successMessage');
+            message.classList.add('show-message');
+
+            // Hide the message after 3 seconds
+            setTimeout(() => {
+                message.classList.remove('show-message');
+            }, 3000);
+        }
+
+        // For mobile view: open/close sidebar
+        const toggleBtn = document.getElementById('toggleBtn');
+        toggleBtn.addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        });
+    </script>
+
+<%- include('./base/footer.ejs') %>

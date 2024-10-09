@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<style>
+
+       
+    /* Basic resets and styling */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body, html {
+height: 100%;
+font-family: 'Poppins', sans-serif;
+background-image: url('/images/signupbg.jpg'); /* Soft, calming background */
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.login-container {margin-top: 15%;
+background-color: #ffffff;
+padding: 2.5rem;
+height:auto;
+border-radius: 12px;
+box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+width: auto;
+max-width: 300px; /* Responsive width */
+} 
+.login-container input{
+border: 2px solid grey;
+}
+
+.login-header {
+text-align: center;
+margin-bottom: 2.5rem;
+}
+
+.login-header h2 {
+font-size: 2rem;
+color: #2b3f73; /* Deep blue color for header */
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="number"],
+input[type="select"] {
+width: 100%;
+padding: 1rem;
+margin-bottom: 0.5rem;
+border: 1px solid #b0b5c3;
+border-radius: 8px;
+font-size: 1rem;
+color: #2b3f73;
+background-color: #f5f6fb;
+transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+border-color: #4f75db;
+box-shadow: 0 0 10px rgba(79, 117, 219, 0.5); /* Subtle glow on focus */
+outline: none;
+}
+
+button {
+width: 100%;
+margin-top: 2%;
+align-items: center;
+padding: 1rem;
+background-color: #4f75db; /* Bright primary color */
+color: white;
+font-size: 1.2rem;
+font-weight: 600;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+transition: background-color 0.3s ease, box-shadow 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+button:hover {
+background-color: #3b5bbf;
+box-shadow: 0 0 20px rgba(79, 117, 219, 0.7); /* Glowing effect */
+}
+
+button:after {
+content: '';
+position: absolute;
+top: -100%;
+left: -100%;
+width: 300%;
+height: 300%;
+background: radial-gradient(circle, rgba(79,117,219,0.5), transparent 70%);
+opacity: 0;
+transition: opacity 0.4s, transform 0.4s;
+}
+
+button:hover:after {
+opacity: 1;
+transform: translate(50%, 50%);
+}
+
+
+
+
+
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+.login-container {
+padding: 1.5rem;
+max-width: 90%;
+}
+}
+body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+        }
+        select {
+
+/* styling */
+background-color: white;
+border: thin solid blue;
+border-radius: 4px;
+display: inline-block;
+font: inherit;
+line-height: 1.5em;
+padding: 0.5em 3.5em 0.5em 1em;
+
+/* reset */
+
+margin: 0;      
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-appearance: none;
+-moz-appearance: none;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  top: 80%;
+  width: 100%;
+  background-color: #1e212d;
+  color: white;
+  padding: 15px 0; /* Adjust padding for a balanced look */
+  text-align: center;
+  /* z-index: 1000; Ensures it stays on top of other elements */
+}
+
+footer a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+footer .social-icons i {
+  margin: 0 10px;
+  font-size: 20px;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+footer .social-icons i:hover {
+  color: #3498db;
+}
+       
+        
+</style>
+</head>
+
+<body>
+    
+
+    <div class="login-container">
+        <div class="login-header">
+            <h2>Sign Up</h2>
+        </div>
+
+        <form action="/add/user" method="post" >
+
+            <input type="text" placeholder="First Name" name="firstName" required>
+            <input type="text" placeholder="Last Name" name="lastName">
+            <input type="email" placeholder="Email Id" name="emailId"  required>
+            <input type="text" placeholder="Mobile No." name="mobileNo" required >
+            <input type="text" placeholder="Profile Name" name="profileName" required >
+            <input type="password" placeholder="Password" name="password"  required>
+            <input type="password" placeholder="Confirm Password" name="confirmPassword"  >
+            <select class="select" name="country" >
+                <option>choose you country</option>
+                <option>India</option>
+                <option >USA</option>
+                <option >Italy</option>
+            </select>
+            
+            
+            <div>
+                <button type="submit">Sign Up </button>
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <%- include('./base/footer.ejs') %>
+

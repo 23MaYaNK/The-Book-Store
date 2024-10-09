@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Book Adding</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<style>
+    /* Basic resets and styling */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body,
+    html {
+        height: 100%;
+        font-family: 'Poppins', sans-serif;
+        background-color: #e9effa;
+        /* Soft, calming background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url('/images/addbookbg.jpg'); 
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        flex-direction: column;
+        height: auto;
+        
+       
+    }
+
+    .login-container {
+        background-color: transparent;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 400px;
+        border: 3px solid coral;
+        /* Responsive width */
+        height: auto;
+    }
+
+    .login-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+
+    .login-header h2 {
+        font-size: 2rem;
+        color: #d8dce6;
+        /* Deep blue color for header */
+    }
+
+    input[type="number"],
+    input[type="text"],
+    input[type="file"]{
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid #b0b5c3;
+        border-radius: 8px;
+        font-size: 1rem;
+        color: #0a0811;
+        background-color: #f5f6fb;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus {
+        border-color: #4f75db;
+        box-shadow: 0 0 10px rgba(79, 117, 219, 0.5);
+        /* Subtle glow on focus */
+        outline: none;
+    }
+
+    button {
+        width: 100%;
+        padding: 1rem;
+        background-color: #4f75db;
+        /* Bright primary color */
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    button:hover {
+        background-color: #3b5bbf;
+        box-shadow: 0 0 20px rgba(79, 117, 219, 0.7);
+        /* Glowing effect */
+    }
+
+    button:after {
+        content: '';
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
+        background: radial-gradient(circle, rgba(79, 117, 219, 0.5), transparent 70%);
+        opacity: 0;
+        transition: opacity 0.4s, transform 0.4s;
+    }
+
+    button:hover:after {
+        opacity: 1;
+        transform: translate(50%, 50%);
+    }
+
+    .forgot-password {
+        display: block;
+        text-align: right;
+        margin-top: 1rem;
+        color: #4f75db;
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    .forgot-password:hover {
+        text-decoration: underline;
+    }
+
+    .signup-link {
+        text-align: center;
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .signup-link a {
+        color: #4f75db;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .signup-link a:hover {
+        text-decoration: underline;
+    }
+
+    /* Media queries for responsiveness */
+    @media (max-width: 768px) {
+        .login-container {
+            padding: 1.5rem;
+            max-width: 90%;
+        }
+    }
+
+    
+    /* Heading styling */
+    h1 {
+        font-size: 3rem;
+        font-weight: 600;
+        text-align: center;
+        background: linear-gradient(90deg, #ff6a00, #ee0979);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        margin-top: 2rem;
+        /* Top margin to push down from the top */
+        letter-spacing: 2px;
+    }
+
+    /* Glow effect */
+    h1:hover {
+        animation: glow 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+        from {
+            text-shadow: 2px 2px 10px rgba(255, 106, 0, 0.7), 2px 2px 20px rgba(238, 9, 121, 0.7);
+        }
+
+        to {
+            text-shadow: 2px 2px 15px rgba(255, 106, 0, 1), 2px 2px 30px rgba(238, 9, 121, 1);
+        }
+    }
+    footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  top: 85%;
+  width: 100%;
+  background-color: #1e212d;
+  color: white;
+  padding: 15px 0; /* Adjust padding for a balanced look */
+  text-align: center;
+  z-index: 1000; 
+  overflow-y: auto;
+}
+
+footer a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+footer .social-icons i {
+  margin: 0 10px;
+  font-size: 20px;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+footer .social-icons i:hover {
+  color: #3498db;
+}
+</style>
+</head>
+
+<body>
+    <h1>The Book Store</h1>
+
+    <div class="login-container">
+        <div class="login-header">
+            <h2>Add New Book</h2>
+        </div>
+
+        <form action="/add/new/book" method="post" enctype="multipart/form-data">
+
+            <input type="text" placeholder="Book Title" name="bookTitle" required>
+            <input type="text" placeholder="Author Name" name="authorName">
+            <input type="text" placeholder="Publisher Name" name="publisherName" >
+            <input type="text" placeholder="Language" name="language" required >
+            <input type="number" placeholder="Price Per Unit" name="pricePerUnit"  required>
+            <input type="number" placeholder="No. of the Pages" name="noofPages"  >
+            <input type="number" placeholder="ISBN Number" name="isbnNo"  >
+            <input type="text" placeholder="Origin Country "  name="originCountry"  >
+            <div >
+                <label for=""class="form-label"></label>
+               <input type="file" name="bookImage">
+            </div>
+            <button type="submit">Add Book</button>
+
+        </form>
+
+    </div>
+    <%- include('./base/footer.ejs') %>

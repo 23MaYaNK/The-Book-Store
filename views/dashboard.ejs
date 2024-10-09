@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+</head>
+<style>
+    body,html{
+                margin: 1%;
+                padding: 2px;
+                background-image: url('/images/adminbg.jpg');
+    }
+    
+    /* Sidebar styling */
+    .sidebar {
+        background: linear-gradient(135deg, #3b5998, #8b9dc3);
+        width: 150px;
+        height: 100%;
+        padding: 20px;
+        transition: all 0.3s ease-in-out;
+        position: fixed;
+        top: 0;
+        left: 0;
+        box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+        color: white;
+    }
+
+    .sidebar.collapsed {
+        width: 80px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .sidebar.collapsed .nav-link span {
+        display: none;
+    }
+
+    .sidebar .nav-link {
+        color: white;
+        font-weight: bold;
+        margin: 15px 0;
+        padding: 10px;
+        border-radius: 8px;
+        transition: background-color 0.2s, padding-left 0.2s;
+    }
+
+    .sidebar .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        padding-left: 20px;
+    }
+
+    .sidebar .nav-link i {
+        margin-right: 10px;
+    }
+</style>
+<body>
+    <div class="sidebar" id="sidebar" >
+        <ul class="nav flex-column" style="margin-top: 2%;" >
+            <li class="nav-item">
+                <a class="nav-link" href="/login">
+                    <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">
+                    <i class="fas fa-Back"></i> <span>Back</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+</body>
+</html>
